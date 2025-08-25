@@ -1,0 +1,23 @@
+---
+import { FCMembers } from "@xivapi/nodestone";
+import { Image } from "astro:assets";
+
+const members = await new FCMembers().parse({ params: { fcId: "9235053248388344200" } });
+---
+
+<ol>
+	{
+		members.List.map((member) => (
+			<li>
+				<Image src={member.Avatar} alt={member.Name} width="100" height="100" />
+				<h3>{member.Name}</h3>
+			</li>
+		))
+	}
+</ol>
+
+<style lang="scss">
+	ol {
+		list-style: none;
+	}
+</style>
