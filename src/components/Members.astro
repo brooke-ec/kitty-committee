@@ -9,8 +9,15 @@ const members = await new FCMembers().parse({ params: { fcId: "92350532483883442
 	{
 		members.List.map((member) => (
 			<li>
-				<Image src={member.Avatar} alt={member.Name} width="100" height="100" />
-				<h3>{member.Name}</h3>
+				<Image src={member.Avatar} alt={member.Name} class="avatar" width="100" height="100" />
+				<div>
+					<h3>
+						<a href={`https://eu.finalfantasyxiv.com/lodestone/character/${member.ID}`}>{member.Name}</a>
+					</h3>
+					<p class="rank">
+						<img src={member.FcRankIcon} /> {member.FcRank}
+					</p>
+				</div>
 			</li>
 		))
 	}
@@ -18,6 +25,29 @@ const members = await new FCMembers().parse({ params: { fcId: "92350532483883442
 
 <style lang="scss">
 	ol {
+		margin-top: 20px;
 		list-style: none;
+		flex-wrap: wrap;
+		display: flex;
+		gap: 40px;
+	}
+
+	li {
+		display: flex;
+		gap: 10px;
+
+		a {
+			color: inherit;
+		}
+
+		.avatar {
+			border-radius: 10px;
+		}
+
+		.rank {
+			align-items: center;
+			gap: 5px;
+			display: flex;
+		}
 	}
 </style>

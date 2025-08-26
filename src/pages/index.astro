@@ -22,6 +22,7 @@ import { Image } from "astro:assets";
 		</div>
 	</Hero>
 	<main>
+		<h2>Members</h2>
 		<Members server:defer />
 	</main>
 </Layout>
@@ -44,5 +45,9 @@ import { Image } from "astro:assets";
 				transform: translate(-10px, -45px) rotate(-10deg);
 			}
 		}
+	}
+
+	h2 {
+		font-size: 2.5rem;
 	}
 </style>
