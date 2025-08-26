@@ -1,14 +1,48 @@
 ---
+import carbuncle from "../assets/carbuncle.png";
+import fatCat from "../assets/fat_cat.png";
 import Members from "../components/Members.astro";
 import Hero from "../components/hero/Hero.astro";
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout>
-	<Hero client:load>
-		<h1>Hello World</h1>
+	<Hero>
+		<div class="title">
+			<Image src={carbuncle} alt="a peridot carbuncle" class="carbuncle" width={100} />
+			<h1>Hello Eorzea</h1>
+			<p>
+				Kitty Committee is a <a href="https://eu.finalfantasyxiv.com/" target="_blank">FFXIV</a> Free Company in
+				the Louisoix server.
+			</p>
+			<div class="fat-cat">
+				<Image src={fatCat} alt="a fat cat" width={100} />
+			</div>
+		</div>
 	</Hero>
 	<main>
 		<Members server:defer />
 	</main>
 </Layout>
+
+<style lang="scss">
+	.title {
+		max-width: 400px;
+		padding-right: 40px;
+
+		.carbuncle {
+			position: absolute;
+			transform: translate(-70px, -45px) rotate(-20deg);
+		}
+
+		.fat-cat {
+			margin-left: 100%;
+
+			& > * {
+				position: absolute;
+				transform: translate(-10px, -45px) rotate(-10deg);
+			}
+		}
+	}
+</style>

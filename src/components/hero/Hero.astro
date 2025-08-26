@@ -8,8 +8,15 @@ const banner = await getRandomBanner();
 		<div class="banner" data-depth="0.2" style=`background-image: url(${banner.src});`></div>
 		<div class="tsparticles" data-depth="0.3"></div>
 		<div class="tsparticles" data-depth="0.4"></div>
-		<div data-depth="0.4"><div class="slot"><slot /></div></div>
+		<div class="content" data-depth="0"><div class="slot"><slot /></div></div>
 	</div>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+		<path
+			fill="#222222"
+			fill-opacity="1"
+			d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+		></path>
+	</svg>
 </div>
 
 <script>
@@ -59,26 +66,39 @@ const banner = await getRandomBanner();
 <style lang="scss">
 	.hero {
 		overflow: hidden;
-		height: 540px;
+		height: 580px;
 	}
 
 	#scene {
 		height: 100%;
 
-		div {
+		& > div {
 			height: 100%;
 			width: 100%;
 		}
 	}
 
 	.banner {
-		background-position: center;
+		background-position: 50% 70%;
 		background-size: cover;
 	}
 
-	.slot {
+	.content {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		padding-bottom: 40px;
+
+		.slot {
+			border-radius: 0 5px 5px 0;
+			background-color: #222222;
+			padding: 10px 20px 10px var(--page-margin);
+		}
+	}
+
+	svg {
+		position: absolute;
+		margin-top: -80px;
+		height: 80px;
+		width: 100%;
 	}
 </style>
