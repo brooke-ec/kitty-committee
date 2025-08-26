@@ -4,6 +4,7 @@ const BANNERS = [
 	() => import("../../assets/banners/ffxiv_28052025_235242_761.png"),
 	() => import("../../assets/banners/ffxiv_17062025_222424_335.png"),
 	() => import("../../assets/banners/ffxiv_22032025_155245_007.png"),
+	() => import("../../assets/banners/ffxiv_26082025_184309_071.png"),
 ];
 
 export function getRandomBanner() {

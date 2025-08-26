@@ -13,7 +13,7 @@ import { Image } from "astro:assets";
 			<Image src={carbuncle} alt="a peridot carbuncle" class="carbuncle" width={100} />
 			<h1>Hello Eorzea</h1>
 			<p>
-				Kitty Committee is a <a href="https://eu.finalfantasyxiv.com/" target="_blank">FFXIV</a> Free Company in
+				Kitty Committee is a <a href="https://eu.finalfantasyxiv.com/" target="_blank">FFXIV</a> Free Company on
 				the Louisoix server.
 			</p>
 			<div class="fat-cat">
@@ -22,32 +22,53 @@ import { Image } from "astro:assets";
 		</div>
 	</Hero>
 	<main>
-		<h2>Members</h2>
-		<Members server:defer />
+		<h2>About</h2>
+		<p>
+			Kitty Committee is a free company of Miqo'te (and and other races) based on the Louisoix server. This
+			website is for members of the free company and serves no real purpose. Feel free to have a look around, and
+			visit us at Plot 34, 25 Ward, Shirogane.
+			<h2>Members</h2>
+			<Members server:defer />
+		</p>
 	</main>
-</Layout>
 
-<style lang="scss">
-	.title {
-		max-width: 400px;
-		padding-right: 40px;
+	<style lang="scss">
+		@use "include-media";
 
-		.carbuncle {
-			position: absolute;
-			transform: translate(-70px, -45px) rotate(-20deg);
-		}
+		.title {
+			max-width: 400px;
+			padding-right: 40px;
 
-		.fat-cat {
-			margin-left: 100%;
-
-			& > * {
+			.carbuncle {
 				position: absolute;
-				transform: translate(-10px, -45px) rotate(-10deg);
+				transform: translate(-70px, -45px) rotate(-20deg);
+
+				@include include-media.media("<1400px") {
+					display: none;
+				}
+			}
+
+			.fat-cat {
+				margin-left: 100%;
+
+				@include include-media.media("<600px") {
+					display: none;
+				}
+
+				& > * {
+					position: absolute;
+					transform: translate(-10px, -45px) rotate(-10deg);
+				}
 			}
 		}
-	}
 
-	h2 {
-		font-size: 2.5rem;
-	}
-</style>
+		h2 {
+			font-size: 2.5rem;
+			margin: 20px 0;
+
+			&:first-of-type {
+				margin-top: 0;
+			}
+		}
+	</style>
+</Layout>
