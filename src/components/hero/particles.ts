@@ -1,7 +1,7 @@
 import type { ISourceOptions } from "@tsparticles/engine";
 import image from "../../assets/particle.png";
 
-const particles: ISourceOptions = {
+const OPTIONS: ISourceOptions = {
 	autoPlay: true,
 	backgroundMask: {
 		composite: "destination-out",
@@ -121,7 +121,7 @@ const particles: ISourceOptions = {
 				mode: "delete",
 				value: 0,
 			},
-			value: 200,
+			value: 250,
 		},
 		opacity: {
 			value: 1,
@@ -160,7 +160,7 @@ const particles: ISourceOptions = {
 			},
 		},
 		size: {
-			value: 20,
+			value: 30,
 			animation: {
 				count: 0,
 				enable: false,
@@ -336,4 +336,4 @@ const particles: ISourceOptions = {
 	},
 };
 
-export default particles;
+export default OPTIONS;

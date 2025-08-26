@@ -1,5 +1,6 @@
 ---
-import banner from "../../assets/banners/ffxiv_07072025_151021_661.png";
+import { getRandomBanner } from "./banners";
+const banner = await getRandomBanner();
 ---
 
 <div class="hero">
@@ -71,7 +72,7 @@ import banner from "../../assets/banners/ffxiv_07072025_151021_661.png";
 	}
 
 	.banner {
-		background-position: 50% 50%;
+		background-position: center;
 		background-size: cover;
 	}
 
