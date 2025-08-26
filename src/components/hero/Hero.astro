@@ -1,0 +1,83 @@
+---
+import banner from "../../assets/banners/ffxiv_07072025_151021_661.png";
+---
+
+<div class="hero">
+	<div id="scene">
+		<div class="banner" data-depth="0.2" style=`background-image: url(${banner.src});`></div>
+		<div class="tsparticles" data-depth="0.3"></div>
+		<div class="tsparticles" data-depth="0.4"></div>
+		<div data-depth="0.4"><div class="slot"><slot /></div></div>
+	</div>
+</div>
+
+<script>
+	import { tsParticles } from "@tsparticles/engine";
+	import { loadFull } from "tsparticles";
+	import options from "./particles.ts";
+
+	const scene = document.getElementById("scene")!;
+
+	let pointer: { x: number; y: number } = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+	let target: { x: number; y: number } = pointer;
+
+	function update() {
+		requestAnimationFrame(update);
+
+		pointer = {
+			x: pointer.x + (target.x - pointer.x) * 0.1,
+			y: pointer.y + (target.y - pointer.y) * 0.1,
+		};
+
+		let offset = 0;
+		for (const node of scene.childNodes) {
+			if (node instanceof HTMLElement && node.hasAttribute("data-depth")) {
+				const depth = parseFloat(node.getAttribute("data-depth")!) * 0.25;
+				node.style.transform = `translate(${(window.scrollX * 4 - pointer.x) * depth}px, ${(window.scrollY * 4 - pointer.y) * depth - offset}px)`;
+				node.style.height = `calc(100% + ${depth * 100}vh)`;
+				node.style.width = `calc(100% + ${depth * 100}vw)`;
+				offset += node.clientHeight;
+			}
+		}
+	}
+
+	requestAnimationFrame(update);
+	window.addEventListener("pointermove", (e) => {
+		target = {
+			x: (e.clientX / window.innerWidth) * window.innerWidth,
+			y: (e.clientY / window.innerHeight) * window.innerHeight,
+		};
+	});
+
+	update();
+	loadFull(tsParticles);
+	for (const element of document.getElementsByClassName("tsparticles") as HTMLCollectionOf<HTMLElement>)
+		tsParticles.load({ id: crypto.randomUUID(), element, options });
+</script>
+
+<style lang="scss">
+	.hero {
+		overflow: hidden;
+		height: 540px;
+	}
+
+	#scene {
+		height: 100%;
+
+		div {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.banner {
+		background-position: 50% 50%;
+		background-size: cover;
+	}
+
+	.slot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>
