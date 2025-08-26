@@ -1,10 +1,14 @@
 ---
 import Members from "../components/Members.astro";
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <Layout>
+	<Hero client:load>
+		<h1>Hello World</h1>
+	</Hero>
 	<main>
-		<Members />
+		<Members server:defer />
 	</main>
 </Layout>
