@@ -3,6 +3,7 @@ export const prerender = false;
 
 import carbuncle from "../assets/carbuncle.png";
 import fatCat from "../assets/fat_cat.png";
+import LoadingMembers from "../components/LoadingMembers.astro";
 import Members from "../components/Members.astro";
 import Hero from "../components/hero/Hero.astro";
 import Layout from "../layouts/Layout.astro";
@@ -30,7 +31,9 @@ import { Image } from "astro:assets";
 			website is for members of the free company and serves no real purpose. Feel free to have a look around, and
 			visit us at Plot 34, 25 Ward, Shirogane.
 			<h2>Members</h2>
-			<Members server:defer />
+			<Members server:defer>
+				<LoadingMembers slot="fallback" />
+			</Members>
 		</p>
 	</main>
 
