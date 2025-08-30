@@ -8,4 +8,4 @@ RUN pnpm install --frozen-lockfile
 
 RUN pnpm build
 
-CMD [ "node", "./server/entry.mjs" ]
+CMD [ "node", "./dist/server/entry.mjs" ]
