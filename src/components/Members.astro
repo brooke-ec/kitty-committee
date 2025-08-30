@@ -1,8 +1,8 @@
 ---
-import { FCMembers } from "@xivapi/nodestone";
+import { getMembers } from "../xivapi";
 import { Image } from "astro:assets";
 
-const members = await new FCMembers().parse({ params: { fcId: "9235053248388344200" } });
+const members = await getMembers();
 ---
 
 <ol>

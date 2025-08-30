@@ -7,6 +7,6 @@ const BANNERS = [
 	() => import("../../assets/banners/ffxiv_26082025_184309_071.png"),
 ];
 
-export function getRandomBanner() {
-	return BANNERS[Math.floor(Math.random() * BANNERS.length)]().then((mod) => mod.default);
+export async function getRandomBanner() {
+	return await BANNERS[Math.floor(Math.random() * BANNERS.length)]().then((mod) => mod.default);
 }
